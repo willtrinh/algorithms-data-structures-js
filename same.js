@@ -3,7 +3,7 @@
 // has its corresponding value squared in the second array
 // The frequency of values must be the same
 
-// naive solution (nested loop)
+// naive solution (nested loop) O(n^2) time complexity
 function sameNaive(arr1, arr2) {
   // check if both arrays are of same length
   if (arr1.length !== arr2.length) {
@@ -22,29 +22,35 @@ function sameNaive(arr1, arr2) {
   return true;
 }
 
+// O(n) time complexity
 function same(arr1, arr2) {
   // check if both arrays are of same length
   if (arr1.length !== arr2.length) {
     return false;
   }
-  let obj = {}; // store frequency of values in array1
-  // iterate through array1 and store values and its frequency
-  // as key:value pairs
+  let freqCounter1 = {}; // store frequency of values in array1
+  let freqCounter2 = {}; // store frequency of values in array2
   for (const value of arr1) {
-    obj[value] = obj[value] + 1 || 1;
+    freqCounter1[value] = freqCounter1[value] + 1 || 1;
   }
-  // iterate through array2 and squared every value in array1
-  // to see if it's the same
   for (const value of arr2) {
-    console.log(value);
-    console.log(obj[value]);
-    if (obj[Math.sqrt(value)] === Math.sqrt(value)) {
-      obj[Math.sqrt(value)] -= 1;
-      arr2.splice(value, 1);
+    freqCounter2[value] = freqCounter2[value] + 1 || 1;
+  }
+  for (let key in freqCounter1) {
+    if (!(key ** 2 in freqCounter2)) {
+      return false;
+    }
+    if (freqCounter2[key ** 2] !== freqCounter1[key]) {
+      return false;
     }
   }
+  return true;
 }
 
-console.log(sameNaive([1, 2, 3], [4, 1, 9])); // true
-console.log(sameNaive([1, 2, 3], [1, 9])); // false
-console.log(sameNaive([1, 2, 1], [4, 4, 1])); // false (must be same frequency)
+// console.log(sameNaive([1, 2, 3], [4, 1, 9])); // true
+// console.log(sameNaive([1, 2, 3], [1, 9])); // false
+// console.log(sameNaive([1, 2, 1], [4, 4, 1])); // false (must be same frequency)
+
+console.log(same([1, 2, 3], [4, 1, 9])); // true
+// console.log(same([1, 2, 3], [1, 9])); // false
+// console.log(same([1, 2, 1], [4, 4, 1])); // false (must be same frequency)
