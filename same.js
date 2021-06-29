@@ -36,10 +36,13 @@ function same(arr1, arr2) {
   for (const value of arr2) {
     freqCounter2[value] = freqCounter2[value] + 1 || 1;
   }
+  // loop through frequency counter of array1
   for (let key in freqCounter1) {
+    // check if there exist a squared key in freqCounter2
     if (!(key ** 2 in freqCounter2)) {
       return false;
     }
+    // check if the values (frequencies of key) is the same
     if (freqCounter2[key ** 2] !== freqCounter1[key]) {
       return false;
     }
@@ -52,5 +55,6 @@ function same(arr1, arr2) {
 // console.log(sameNaive([1, 2, 1], [4, 4, 1])); // false (must be same frequency)
 
 console.log(same([1, 2, 3], [4, 1, 9])); // true
-// console.log(same([1, 2, 3], [1, 9])); // false
-// console.log(same([1, 2, 1], [4, 4, 1])); // false (must be same frequency)
+console.log(same([1, 2, 3], [1, 9])); // false
+console.log(same([1, 2, 1], [4, 4, 1])); // false (must be same frequency)
+console.log(same([1, 2, 2, 1], [4, 4, 1, 1])); // true (must be same frequency)
