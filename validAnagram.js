@@ -4,17 +4,23 @@
  * letters or another, such as cinema, formed from iceman.
  */
 
-function validAnagram(str1, str2) {
-  if (str1.length !== str2.length) return false;
+function validAnagram(string1, string2) {
+  if (string1.length !== string2.length) return false;
   const freqCounter = {};
-  for (const letter of str1) {
+  // loop through string1 and store all letters in string1 into freqCounter as key
+  // and their responding values as frequencies
+  for (const letter of string1) {
     freqCounter[letter] = freqCounter[letter] + 1 || 1;
   }
-  for (const letter of str2) {
+  // loop through string2
+  for (const letter of string2) {
+    // if letter in string2 doesn't exist in freqCounter (also means it's not in string1)
+    // or the letter is zero then it's not an anagram
     if (!freqCounter[letter]) {
       return false;
     }
-    freqCounter[letter] = freqCounter[letter] - 1;
+    // decrement frequency of the letter by 1 when found
+    freqCounter[letter] -= 1;
   }
   return true;
 }
