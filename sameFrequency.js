@@ -1,3 +1,9 @@
+/* 
+  Write a function called sameFrequency.
+  Given two positive integers, find out if
+  the two numbers have the same frequency of digits.
+  Constraint: O(N) time
+*/
 function sameFrequency(num1, num2) {
   // convert numbers to strings
   num1 = num1.toString();
@@ -19,3 +25,9 @@ function sameFrequency(num1, num2) {
   }
   return true;
 }
+
+// sample outputs
+console.log(sameFrequency(182, 281)); // true
+console.log(sameFrequency(34, 14)); // false
+console.log(sameFrequency(3589578, 5879385)); // true
+console.log(sameFrequency(22, 222)); // false
