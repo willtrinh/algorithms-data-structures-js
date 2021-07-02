@@ -13,17 +13,18 @@
 
 // multiple pointers pattern
 function isSubsequence(string1, string2) {
-  let index = 0;
-  // string1.length <= string2.length;
-  for (let i = 0; i < string2.length; i++) {
-    // when index is at the end of string1 and
-    // last element of string1 equals current elem in string2
-    // then we found the subsequence
-    if (index === string1.length - 1 && string1[index] === string2[i]) {
-      return true;
-    } else if (string1[index] === string2[i]) {
-      index++;
+  let i = 0;
+  let j = 0;
+  // an empty string is subsequence of another string
+  if (!string1) return true;
+  while (j < string2.length) {
+    if (string1[i] === string2[j]) {
+      i++;
     }
+    if (i === string1.length) {
+      return true;
+    }
+    j++;
   }
   return false;
 }
@@ -33,3 +34,4 @@ console.log(isSubsequence("hello", "hello world")); // true
 console.log(isSubsequence("sing", "sting")); // true
 console.log(isSubsequence("abc", "abracadabra")); // true
 console.log(isSubsequence("abc", "acb")); // false (order matters)
+console.log(isSubsequence("", "acb")); // true
