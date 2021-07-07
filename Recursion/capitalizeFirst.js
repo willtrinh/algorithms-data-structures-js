@@ -7,7 +7,6 @@
 function capitalizeFirst(arr) {
   if (arr.length === 1) {
     // capitalize first letter and add the rest of the string
-    console.log(arr[0][0].toUpperCase() + arr[0].substr(1));
     return [arr[0][0].toUpperCase() + arr[0].substr(1)];
   }
   const res = capitalizeFirst(arr.slice(0, -1));
@@ -18,4 +17,4 @@ function capitalizeFirst(arr) {
   return res;
 }
 
-// capitalizeFirst(['car','taco','banana']); // ['Car','Taco','Banana']
+console.log(capitalizeFirst(["car", "taco", "banana"])); // ['Car','Taco','Banana']
