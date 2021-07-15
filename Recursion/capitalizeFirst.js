@@ -17,4 +17,12 @@ function capitalizeFirst(arr) {
   return res;
 }
 
+// iterative approach
+// function capitalizeFirst(arr) {
+//   for (let i = 0; i < arr.length; i++) {
+//     arr[i] = arr[i][0].toUpperCase() + arr[i].substr(1);
+//   }
+//   return arr;
+// }
+
 console.log(capitalizeFirst(["car", "taco", "banana"])); // ['Car','Taco','Banana']
